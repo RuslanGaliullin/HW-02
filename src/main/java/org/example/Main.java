@@ -1,5 +1,15 @@
-package org.example;public class Main {
+package org.example;
+
+import java.io.File;
+
+public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+//        for (var i : Objects.requireNonNull(df.listFiles())) {
+//            if (!i.isDirectory()) {
+//            }
+//        }
+        Handler giga = new Handler("/Users/ruslangaliullin/IdeaProjects/HW-02/src/test");
+        giga.startFolderAnalysis();
+        System.out.println(giga);
     }
 }
