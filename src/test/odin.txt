@@ -1,2 +1,0 @@
-asdf
-require 'twodi.txt'
