@@ -1,11 +1,11 @@
 package utilities;
 
 import java.io.File;
+import java.util.HashSet;
 import java.util.Set;
-import java.util.TreeSet;
 
 public class DepFile extends File {
-    private final Set<String> dependencies = new TreeSet<>();
+    private final Set<String> dependencies = new HashSet<>();
 
     public DepFile(String pathname) {
         super(pathname);
@@ -27,7 +27,7 @@ public class DepFile extends File {
         return result;
     }
 
-    public boolean DependsOn(DepFile other) {
+    public boolean dependsOn(DepFile other) {
         if (other == null) {
             return false;
         }

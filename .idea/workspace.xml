@@ -4,17 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="633bcaa2-46f6-47be-b927-d7cf16f18dc5" name="Changes" comment="Сделано сохранения всех текстовых файлов из директории с зависимостями. Ввод корневой директории задается в коде. Не сделано: ввод корневой директории, сортировка файлов по зависимостям.">
-      <change afterPath="$PROJECT_DIR$/src/test/a.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/second/third/smth.txt" afterDir="false" />
+    <list default="true" id="633bcaa2-46f6-47be-b927-d7cf16f18dc5" name="Changes" comment="Сделана сортировка по require">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/DirectoryParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utilities/DirectoryParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/FileParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utilities/FileParser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Handler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Handler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utilities/DepFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utilities/DepFile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/first/firstFile.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/first/firstFile.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/odin.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/odin.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/second/third/last.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/second/third/last.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/twodi.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/twodi.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +64,7 @@
       <updated>1672252472288</updated>
       <workItem from="1672252473584" duration="1257000" />
       <workItem from="1672257707583" duration="1190000" />
-      <workItem from="1672304007283" duration="16681000" />
+      <workItem from="1672304007283" duration="17622000" />
     </task>
     <task id="LOCAL-00001" summary="Сделано сохранения всех текстовых файлов из директории с зависимостями. Ввод корневой директории задается в коде. Не сделано: ввод корневой директории, сортировка файлов по зависимостям.">
       <created>1672323764397</created>
@@ -77,7 +73,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672323764397</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Сделана сортировка по require">
+      <created>1672329962353</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1672329962353</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -96,129 +99,130 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Сделано сохранения всех текстовых файлов из директории с зависимостями. Ввод корневой директории задается в коде. Не сделано: ввод корневой директории, сортировка файлов по зависимостям." />
-    <option name="LAST_COMMIT_MESSAGE" value="Сделано сохранения всех текстовых файлов из директории с зависимостями. Ввод корневой директории задается в коде. Не сделано: ввод корневой директории, сортировка файлов по зависимостям." />
+    <MESSAGE value="Сделана сортировка по require" />
+    <option name="LAST_COMMIT_MESSAGE" value="Сделана сортировка по require" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/FileParser.java</url>
+          <url>file://$PROJECT_DIR$/src/main/java/utilities/FileParser.java</url>
           <line>14</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/FileParser.java</url>
+          <url>file://$PROJECT_DIR$/src/main/java/utilities/FileParser.java</url>
           <line>15</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/FileParser.java</url>
+          <url>file://$PROJECT_DIR$/src/main/java/utilities/FileParser.java</url>
           <line>17</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/FileParser.java</url>
+          <url>file://$PROJECT_DIR$/src/main/java/utilities/FileParser.java</url>
           <line>24</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/FileParser.java</url>
+          <url>file://$PROJECT_DIR$/src/main/java/utilities/FileParser.java</url>
           <line>25</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/FileParser.java</url>
+          <url>file://$PROJECT_DIR$/src/main/java/utilities/FileParser.java</url>
           <line>19</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/FileParser.java</url>
+          <url>file://$PROJECT_DIR$/src/main/java/utilities/FileParser.java</url>
           <line>16</line>
           <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/FileParser.java</url>
+          <url>file://$PROJECT_DIR$/src/main/java/utilities/FileParser.java</url>
           <line>27</line>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/Handler.java</url>
-          <line>74</line>
+          <line>73</line>
           <option name="timeStamp" value="11" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/Handler.java</url>
-          <line>75</line>
+          <line>74</line>
           <option name="timeStamp" value="12" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/Handler.java</url>
-          <line>76</line>
+          <line>75</line>
           <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/Handler.java</url>
-          <line>77</line>
+          <line>76</line>
           <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/Handler.java</url>
-          <line>78</line>
+          <line>77</line>
           <option name="timeStamp" value="15" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/Handler.java</url>
-          <line>81</line>
+          <line>80</line>
           <option name="timeStamp" value="17" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/Handler.java</url>
-          <line>79</line>
+          <line>78</line>
           <option name="timeStamp" value="18" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/Handler.java</url>
-          <line>80</line>
+          <line>79</line>
           <option name="timeStamp" value="19" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/Handler.java</url>
-          <line>84</line>
+          <line>83</line>
           <option name="timeStamp" value="20" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/Handler.java</url>
-          <line>85</line>
+          <line>84</line>
           <option name="timeStamp" value="21" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/Handler.java</url>
-          <line>86</line>
+          <line>85</line>
           <option name="timeStamp" value="22" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/Handler.java</url>
-          <line>82</line>
+          <line>81</line>
           <option name="timeStamp" value="23" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/Handler.java</url>
-          <line>87</line>
+          <line>86</line>
           <option name="timeStamp" value="24" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/Handler.java</url>
-          <line>88</line>
+          <line>87</line>
           <option name="timeStamp" value="25" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/Handler.java</url>
-          <line>89</line>
+          <line>88</line>
           <option name="timeStamp" value="26" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/org/example/Handler.java</url>
-          <line>73</line>
+          <line>72</line>
           <properties class="org.example.Handler" method="getOrder">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />

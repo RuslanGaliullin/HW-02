@@ -1,8 +1,9 @@
 package org.example;
 
 import utilities.DepFile;
+import utilities.DirectoryParser;
+import utilities.FileParser;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
 
@@ -10,7 +11,7 @@ import java.util.*;
 public class Handler {
     private final String root;
     private boolean cycle = false;
-    private final Set<DepFile> files = new TreeSet<>();
+    private final Set<DepFile> files = new HashSet<>();
 
     public Handler(String root) {
         this.root = root;
@@ -24,15 +25,13 @@ public class Handler {
         cycle = findCycle();
         if (cycle) {
             System.out.println("Cycle detected");
-        } else {
-            System.out.println(files.size());
         }
     }
 
     private boolean findCycle() {
         for (var i : files) {
             for (var j : files) {
-                if (i != j && i.DependsOn(j) && j.DependsOn(i)) {
+                if (i != j && i.dependsOn(j) && j.dependsOn(i)) {
                     return true;
                 }
             }
@@ -54,13 +53,13 @@ public class Handler {
     @Override
     public String toString() {
         if (cycle) {
-            return null;
+            return "There is a cycle in dependencies";
         }
         StringBuilder fileList = new StringBuilder();
         StringBuilder data = new StringBuilder();
         List<DepFile> queue = getOrder();
         for (var i : queue) {
-            fileList.append(i.getAbsolutePath()).append('\n');
+            // fileList.append(i.getAbsolutePath()).append('\n');
             try (Scanner scanner = new Scanner(i)) {
                 while (scanner.hasNext()) {
                     data.append(scanner.nextLine()).append('\n');
@@ -79,7 +78,7 @@ public class Handler {
         for (int i = result.size() - 2; i >= 0; --i) {
             var tempFile = result.get(i);
             for (int j = i + 1; j <= result.size(); ++j) {
-                if (j == result.size() || result.get(j).DependsOn(tempFile)) {
+                if (j == result.size() || result.get(j).dependsOn(tempFile)) {
                     result.set(j - 1, tempFile);
                     break;
                 }

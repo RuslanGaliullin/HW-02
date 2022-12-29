@@ -1,6 +1,4 @@
-package org.example;
-
-import utilities.DepFile;
+package utilities;
 
 import java.io.File;
 import java.util.*;
