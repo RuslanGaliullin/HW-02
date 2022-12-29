@@ -17,13 +17,13 @@ public class FileParser {
             int ending = 0;
             while (beginning != -1) {
                 beginning += 9 + ending;
-                ending = data.substring(beginning).indexOf("'");
+                ending = data.substring(beginning).indexOf("’");
                 if (ending == -1) {
                     break;
                 }
                 ending += beginning;
                 file.addDependencies(root + "/" + data.substring(beginning, ending));
-                beginning = data.substring(ending).indexOf("require '");
+                beginning = data.substring(ending).indexOf("require ’");
             }
         } catch (FileNotFoundException ignored) {
         }

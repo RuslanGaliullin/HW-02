@@ -1,2 +1,2 @@
 smth plain text
-require 'second/third/last.txt'
+require ’second/third/last.txt’
