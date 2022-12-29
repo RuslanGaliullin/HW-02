@@ -2,6 +2,7 @@ package org.example;
 
 import utilities.DepFile;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
 
@@ -10,7 +11,6 @@ public class Handler {
     private final String root;
     private boolean cycle = false;
     private final Set<DepFile> files = new TreeSet<>();
-    private final Set<DepFile> lowestFiles = new TreeSet<>();
 
     public Handler(String root) {
         this.root = root;
@@ -22,14 +22,10 @@ public class Handler {
             FileParser.addFileDependacies(o, root);
         }
         cycle = findCycle();
-        if (!cycle) {
+        if (cycle) {
             System.out.println("Cycle detected");
         } else {
             System.out.println(files.size());
-            System.out.println(lowestFiles.size());
-            for (var o : lowestFiles) {
-                System.out.println(o.getAbsolutePath());
-            }
         }
     }
 
@@ -62,12 +58,12 @@ public class Handler {
         }
         StringBuilder fileList = new StringBuilder();
         StringBuilder data = new StringBuilder();
-        List<DepFile> queue = getOrder().orElse(new ArrayList<>());
+        List<DepFile> queue = getOrder();
         for (var i : queue) {
             fileList.append(i.getAbsolutePath()).append('\n');
             try (Scanner scanner = new Scanner(i)) {
                 while (scanner.hasNext()) {
-                    data.append(scanner.nextLine());
+                    data.append(scanner.nextLine()).append('\n');
                 }
             } catch (FileNotFoundException ignored) {
             }
@@ -75,13 +71,21 @@ public class Handler {
         return fileList.append(data).toString();
     }
 
-    private Optional<List<DepFile>> getOrder() {
-//        List<DepFile> result = new ArrayList<>(files);
-//        for (int i = 1; i < result.size(); ++i) {
-//            for (int j = 0; j < i; ++j) {
-//                if(result.get(i).DependsOn())
-//            }
-//        }
-        return Optional.empty();
+    private List<DepFile> getOrder() {
+        List<DepFile> result = new ArrayList<>(files);
+        if (files.size() == 1) {
+            return result;
+        }
+        for (int i = result.size() - 2; i >= 0; --i) {
+            var tempFile = result.get(i);
+            for (int j = i + 1; j <= result.size(); ++j) {
+                if (j == result.size() || result.get(j).DependsOn(tempFile)) {
+                    result.set(j - 1, tempFile);
+                    break;
+                }
+                result.set(j - 1, result.get(j));
+            }
+        }
+        return result;
     }
 }

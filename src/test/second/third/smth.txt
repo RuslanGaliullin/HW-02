@@ -1,0 +1,2 @@
+smth plain text
+require 'second/third/last.txt'

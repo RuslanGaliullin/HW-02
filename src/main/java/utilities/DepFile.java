@@ -5,7 +5,7 @@ import java.util.Set;
 import java.util.TreeSet;
 
 public class DepFile extends File {
-    private Set<String> dependencies = new TreeSet<>();
+    private final Set<String> dependencies = new TreeSet<>();
 
     public DepFile(String pathname) {
         super(pathname);
@@ -13,10 +13,6 @@ public class DepFile extends File {
 
     public Set<String> getDependencies() {
         return dependencies;
-    }
-
-    public void setDependencies(Set<String> dependencies) {
-        this.dependencies = dependencies;
     }
 
     public DepFile[] listFiles() {

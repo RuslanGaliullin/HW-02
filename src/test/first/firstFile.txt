@@ -1,2 +1,2 @@
-require 'odin.txt'
+just firstFile
 require 'twodi.txt'
