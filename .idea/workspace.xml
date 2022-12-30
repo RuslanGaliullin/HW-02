@@ -4,24 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="084e53e4-8a11-445a-ace7-88ab9f7f35b0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/first/dfs.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="084e53e4-8a11-445a-ace7-88ab9f7f35b0" name="Changes" comment="Тесты с некорректными записями require. README.md написано. Все комментарии прописаны">
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/main/FileCollector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/main/FileCollector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/main/FileParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utilities/FileParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/main/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utilities/DependentFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/main/DependentFile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utilities/DirectoryParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utilities/DirectoryParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/a.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/a.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/first/firstFile.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/first/firstFile.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/odin.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/odin.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/second/third/last.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/second/third/last.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/second/third/smth.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/second/third/smth.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/twodi.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/twodi.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,8 +82,16 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1672418109910</updated>
-      <workItem from="1672418112462" duration="4243000" />
+      <workItem from="1672418112462" duration="4580000" />
     </task>
+    <task id="LOCAL-00001" summary="Тесты с некорректными записями require. README.md написано. Все комментарии прописаны">
+      <created>1672426090401</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1672426090401</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -115,5 +107,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Тесты с некорректными записями require. README.md написано. Все комментарии прописаны" />
+    <option name="LAST_COMMIT_MESSAGE" value="Тесты с некорректными записями require. README.md написано. Все комментарии прописаны" />
   </component>
 </project>
