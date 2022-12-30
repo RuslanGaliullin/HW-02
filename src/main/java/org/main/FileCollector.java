@@ -1,21 +1,31 @@
 package org.main;
 
-import utilities.DependentFile;
 import utilities.DirectoryParser;
+import utilities.FileParser;
 
 import java.io.FileNotFoundException;
 import java.util.*;
 
-
+/**
+ * Основной класс для сбора текстовых файлов и их конкатенации в соответствии с зависимостями
+ */
 public class FileCollector {
+    // Директория, в которой идет сбор файлов
     private final String root;
+    // Наличие цикла в директории объекта
     private boolean cycle = false;
+    // Файлы в директории объекта
     private final Set<DependentFile> files = new HashSet<>();
+    // Список файлов в соответствии с зависимостями
+    private List<DependentFile> dependencyList = new ArrayList<>();
 
     public FileCollector(String root) {
         this.root = root;
     }
 
+    /**
+     * Метода для запуска сбора файлов и проверки их цикличности
+     */
     public void startFolderAnalysis() {
         collectAllFiles();
         for (var o : files) {
@@ -24,9 +34,16 @@ public class FileCollector {
         cycle = findCycle();
         if (cycle) {
             System.out.println("Cycle detected");
+        } else {
+            dependencyList = getOrder();
         }
     }
 
+    /**
+     * Метод для обнаружения цикла в зависимостях
+     *
+     * @return true или false - есть цикл или нет
+     */
     private boolean findCycle() {
         for (var i : files) {
             for (var j : files) {
@@ -38,6 +55,9 @@ public class FileCollector {
         return false;
     }
 
+    /**
+     * Метод для сбора всех файлов .txt в корневой директории
+     */
     private void collectAllFiles() {
         var directories = new TreeSet<String>();
         DirectoryParser.getFiles(root, "txt").ifPresent(files::addAll);
@@ -49,6 +69,11 @@ public class FileCollector {
         }
     }
 
+    /**
+     * Перегруженный метод для конкатенации всех файлов
+     *
+     * @return строка-результат конкатенаций
+     */
     @Override
     public String toString() {
         if (cycle) {
@@ -56,8 +81,8 @@ public class FileCollector {
         }
         StringBuilder fileList = new StringBuilder();
         StringBuilder data = new StringBuilder();
-        List<DependentFile> queue = getOrder();
-        for (var i : queue) {
+        for (var i : dependencyList) {
+            // Если захотите увидеть список зависимостей
             // fileList.append(i.getAbsolutePath()).append('\n');
             try (Scanner scanner = new Scanner(i)) {
                 while (scanner.hasNext()) {
@@ -69,8 +94,13 @@ public class FileCollector {
         return fileList.append(data).toString();
     }
 
+    /**
+     * Метод для сортировки всех файлов по зависимостям
+     *
+     * @return отсортированный список
+     */
     private List<DependentFile> getOrder() {
-        List<DependentFile> result = new ArrayList<>(files);
+        ArrayList<DependentFile> result = new ArrayList<>(files);
         if (files.size() == 1) {
             return result;
         }

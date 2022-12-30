@@ -1,2 +1,2 @@
-just firstFile
-require ’twodi.txt’
+
+just firstFile require ’twodi.txt’
