@@ -1,19 +1,19 @@
-package utilities;
+package org.main;
 
-import utilities.DepFile;
+import utilities.DependentFile;
 
 import java.io.FileNotFoundException;
 import java.util.Optional;
 import java.util.Scanner;
 
 public class FileParser {
-    public static void addFileDependacies(DepFile file, String root) {
+    public static void addFileDependencies(DependentFile file, String root) {
         try (Scanner scanner = new Scanner(file)) {
             StringBuilder data = new StringBuilder();
             while (scanner.hasNext()) {
                 data.append(scanner.nextLine());
             }
-            var beginning = data.indexOf("require '");
+            var beginning = data.indexOf("require ’");
             int ending = 0;
             while (beginning != -1) {
                 beginning += 9 + ending;

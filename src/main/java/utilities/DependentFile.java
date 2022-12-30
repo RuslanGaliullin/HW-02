@@ -4,30 +4,26 @@ import java.io.File;
 import java.util.HashSet;
 import java.util.Set;
 
-public class DepFile extends File {
+public class DependentFile extends File {
     private final Set<String> dependencies = new HashSet<>();
 
-    public DepFile(String pathname) {
+    public DependentFile(String pathname) {
         super(pathname);
     }
 
-    public Set<String> getDependencies() {
-        return dependencies;
-    }
-
-    public DepFile[] listFiles() {
+    public DependentFile[] listFiles() {
         var list = super.listFiles();
         if (list == null) {
             return null;
         }
-        DepFile[] result = new DepFile[list.length];
+        DependentFile[] result = new DependentFile[list.length];
         for (int i = 0; i < list.length; ++i) {
-            result[i] = new DepFile(list[i].getAbsolutePath());
+            result[i] = new DependentFile(list[i].getAbsolutePath());
         }
         return result;
     }
 
-    public boolean dependsOn(DepFile other) {
+    public boolean dependsOn(DependentFile other) {
         if (other == null) {
             return false;
         }

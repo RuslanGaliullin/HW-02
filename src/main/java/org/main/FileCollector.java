@@ -1,26 +1,25 @@
-package org.example;
+package org.main;
 
-import utilities.DepFile;
+import utilities.DependentFile;
 import utilities.DirectoryParser;
-import utilities.FileParser;
 
 import java.io.FileNotFoundException;
 import java.util.*;
 
 
-public class Handler {
+public class FileCollector {
     private final String root;
     private boolean cycle = false;
-    private final Set<DepFile> files = new HashSet<>();
+    private final Set<DependentFile> files = new HashSet<>();
 
-    public Handler(String root) {
+    public FileCollector(String root) {
         this.root = root;
     }
 
     public void startFolderAnalysis() {
         collectAllFiles();
         for (var o : files) {
-            FileParser.addFileDependacies(o, root);
+            FileParser.addFileDependencies(o, root);
         }
         cycle = findCycle();
         if (cycle) {
@@ -41,10 +40,10 @@ public class Handler {
 
     private void collectAllFiles() {
         var directories = new TreeSet<String>();
-        DirectoryParser.getTextFiles(root).ifPresent(files::addAll);
+        DirectoryParser.getFiles(root, "txt").ifPresent(files::addAll);
         DirectoryParser.getDirs(root).ifPresent(directories::addAll);
         while (directories.size() > 0) {
-            DirectoryParser.getTextFiles(directories.first()).ifPresent(files::addAll);
+            DirectoryParser.getFiles(directories.first(), "txt").ifPresent(files::addAll);
             DirectoryParser.getDirs(directories.first()).ifPresent(directories::addAll);
             directories.remove(directories.first());
         }
@@ -57,7 +56,7 @@ public class Handler {
         }
         StringBuilder fileList = new StringBuilder();
         StringBuilder data = new StringBuilder();
-        List<DepFile> queue = getOrder();
+        List<DependentFile> queue = getOrder();
         for (var i : queue) {
             // fileList.append(i.getAbsolutePath()).append('\n');
             try (Scanner scanner = new Scanner(i)) {
@@ -70,16 +69,17 @@ public class Handler {
         return fileList.append(data).toString();
     }
 
-    private List<DepFile> getOrder() {
-        List<DepFile> result = new ArrayList<>(files);
+    private List<DependentFile> getOrder() {
+        List<DependentFile> result = new ArrayList<>(files);
         if (files.size() == 1) {
             return result;
         }
+        // Алгоритм сортировкой вставками: пытаемся опустить в списки каждый файл как можно ниже
         for (int i = result.size() - 2; i >= 0; --i) {
-            var tempFile = result.get(i);
+            var currentFile = result.get(i);
             for (int j = i + 1; j <= result.size(); ++j) {
-                if (j == result.size() || result.get(j).dependsOn(tempFile)) {
-                    result.set(j - 1, tempFile);
+                if (j == result.size() || result.get(j).dependsOn(currentFile)) {
+                    result.set(j - 1, currentFile);
                     break;
                 }
                 result.set(j - 1, result.get(j));

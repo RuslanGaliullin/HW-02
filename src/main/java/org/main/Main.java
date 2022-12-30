@@ -1,13 +1,18 @@
-package org.example;
+package org.main;
 
+import java.io.File;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         var root = getRootDirectory();
-        Handler giga = new Handler(root);
-        giga.startFolderAnalysis();
-        System.out.println(giga);
+        if (new File(root).exists()) {
+            FileCollector merger = new FileCollector(root);
+            merger.startFolderAnalysis();
+            System.out.println(merger);
+        } else {
+            System.out.println("Given directory does not exist\n");
+        }
     }
 
     private static String getRootDirectory() {
