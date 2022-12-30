@@ -25,6 +25,7 @@ public class DependentFile extends File {
         if (list == null) {
             return null;
         }
+
         DependentFile[] result = new DependentFile[list.length];
         for (int i = 0; i < list.length; ++i) {
             result[i] = new DependentFile(list[i].getAbsolutePath());
@@ -38,7 +39,7 @@ public class DependentFile extends File {
      * @param other файл, зависимость от кого проверяет метод
      * @return зависит файл или нет
      */
-    public boolean dependsOn(DependentFile other) {
+    public boolean isDependentOn(DependentFile other) {
         if (other == null) {
             return false;
         }

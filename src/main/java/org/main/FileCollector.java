@@ -1,7 +1,7 @@
 package org.main;
 
-import utilities.DirectoryParser;
-import utilities.FileParser;
+import utility.DirectoryUtils;
+import utility.FileUtils;
 
 import java.io.FileNotFoundException;
 import java.util.*;
@@ -29,9 +29,10 @@ public class FileCollector {
     public void startFolderAnalysis() {
         collectAllFiles();
         for (var o : files) {
-            FileParser.addFileDependencies(o, root);
+            FileUtils.addFileDependencies(o, root);
         }
-        cycle = findCycle();
+
+        cycle = hasCycle();
         if (cycle) {
             System.out.println("Cycle detected");
         } else {
@@ -44,10 +45,10 @@ public class FileCollector {
      *
      * @return true или false - есть цикл или нет
      */
-    private boolean findCycle() {
+    private boolean hasCycle() {
         for (var i : files) {
             for (var j : files) {
-                if (i != j && i.dependsOn(j) && j.dependsOn(i)) {
+                if (i != j && i.isDependentOn(j) && j.isDependentOn(i)) {
                     return true;
                 }
             }
@@ -60,11 +61,12 @@ public class FileCollector {
      */
     private void collectAllFiles() {
         var directories = new TreeSet<String>();
-        DirectoryParser.getFiles(root, "txt").ifPresent(files::addAll);
-        DirectoryParser.getDirs(root).ifPresent(directories::addAll);
+        DirectoryUtils.getFiles(root, "txt").ifPresent(files::addAll);
+        DirectoryUtils.getDirs(root).ifPresent(directories::addAll);
+
         while (directories.size() > 0) {
-            DirectoryParser.getFiles(directories.first(), "txt").ifPresent(files::addAll);
-            DirectoryParser.getDirs(directories.first()).ifPresent(directories::addAll);
+            DirectoryUtils.getFiles(directories.first(), "txt").ifPresent(files::addAll);
+            DirectoryUtils.getDirs(directories.first()).ifPresent(directories::addAll);
             directories.remove(directories.first());
         }
     }
@@ -79,11 +81,9 @@ public class FileCollector {
         if (cycle) {
             return "There is a cycle in dependencies";
         }
-        StringBuilder fileList = new StringBuilder();
+
         StringBuilder data = new StringBuilder();
         for (var i : dependencyList) {
-            // Если захотите увидеть список зависимостей
-            // fileList.append(i.getAbsolutePath()).append('\n');
             try (Scanner scanner = new Scanner(i)) {
                 while (scanner.hasNext()) {
                     data.append(scanner.nextLine()).append('\n');
@@ -91,7 +91,7 @@ public class FileCollector {
             } catch (FileNotFoundException ignored) {
             }
         }
-        return fileList.append(data).toString();
+        return data.toString();
     }
 
     /**
@@ -104,17 +104,19 @@ public class FileCollector {
         if (files.size() == 1) {
             return result;
         }
+
         // Алгоритм сортировкой вставками: пытаемся опустить в списки каждый файл как можно ниже
         for (int i = result.size() - 2; i >= 0; --i) {
             var currentFile = result.get(i);
             for (int j = i + 1; j <= result.size(); ++j) {
-                if (j == result.size() || result.get(j).dependsOn(currentFile)) {
+                if (j == result.size() || result.get(j).isDependentOn(currentFile)) {
                     result.set(j - 1, currentFile);
                     break;
                 }
                 result.set(j - 1, result.get(j));
             }
         }
+
         return result;
     }
 }

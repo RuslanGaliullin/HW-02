@@ -1,16 +1,17 @@
-package utilities;
+package utility;
 
 import org.main.DependentFile;
 
 import java.io.File;
-import java.util.*;
+import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
  * Класс-набор с методами для обработки директории
  */
-public class DirectoryParser {
+public final class DirectoryUtils {
     /**
      * Найти все файлы в директории с данным расширением
      *
@@ -25,7 +26,7 @@ public class DirectoryParser {
         }
         return Optional.of(Stream.of(list)
                 .filter(member -> !member.isDirectory())
-                .filter(member -> FileParser.getExtension(member.getName()).orElse("").equals(extension))
+                .filter(member -> FileUtils.getExtension(member.getName()).orElse("").equals(extension))
                 .collect(Collectors.toSet()));
     }
 

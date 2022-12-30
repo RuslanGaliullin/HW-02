@@ -1,4 +1,4 @@
-package utilities;
+package utility;
 
 import org.main.DependentFile;
 
@@ -10,7 +10,7 @@ import java.util.Scanner;
 /**
  * Класс-набор с методами для обработки файлов
  */
-public class FileParser {
+public final class FileUtils {
     /**
      * Метод, для сохранения зависимостей из файла
      *
@@ -23,6 +23,7 @@ public class FileParser {
             while (scanner.hasNext()) {
                 data.append(scanner.nextLine());
             }
+
             // Поиск всех подстрок вида:require ’*’
             var beginning = data.indexOf("require ’");
             int ending = 0;
@@ -37,6 +38,7 @@ public class FileParser {
                 file.addDependencies(root + File.pathSeparator + data.substring(beginning, ending));
                 beginning = data.substring(ending).indexOf("require ’");
             }
+
         } catch (FileNotFoundException ignored) {
         }
     }
