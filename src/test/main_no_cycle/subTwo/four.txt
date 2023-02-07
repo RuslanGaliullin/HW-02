@@ -1,0 +1,2 @@
+
+smth plain text require ’five.txt’require ’seven.txt’
