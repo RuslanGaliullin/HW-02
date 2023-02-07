@@ -1,2 +1,0 @@
-
-just firstFile require ’twodi.txt’

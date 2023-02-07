@@ -1,2 +1,0 @@
-
-odin text file require ’twodi.txt’
